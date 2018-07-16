@@ -6,12 +6,11 @@ public class MultiArray {
 
     public int [][] tablica;
 
+
     public MultiArray(int n, int m){
-        n = rand.nextInt(10);
-        m = rand.nextInt(10);
-        this.tablica[n] = tablica[n];
-        this.tablica[m] = tablica[m];
-        }
+        this.tablica = new int[n][m];
+        randomize();
+    }
 
     public int[][] getTablica() {
         return tablica;
@@ -22,19 +21,47 @@ public class MultiArray {
     }
 
     public void randomize(){
+        for(int i = 0; i < tablica.length; i++){
+            for(int j = 0; j < tablica[i].length;j ++){
+                tablica[i][j] = rand.nextInt(100);
+            }
+        }
 
     }
 
-    public void findMin(){
+    public int findMin(){
+        int minValue = tablica[0][0];
+        for (int i = 1; i < tablica.length; i++) {
+            for(int j = 1; j < tablica[i].length; j++){
+                if (tablica[i][j] < minValue) {
+                minValue = tablica[i][j];
+                }
+            }
+        }
 
+        return minValue;
     }
 
-    public void findMax(){
 
+    public int findMax(){
+            int maxValue = tablica[0][0];
+            for (int i = 1; i < tablica.length; i++) {
+                for (int j = 1; j < tablica[i].length; j++) {
+                    if (tablica[i][j] > maxValue) {
+                        maxValue = tablica[i][j];
+                    }
+                }
+            }
+            return maxValue;
     }
+
 
     public void info(){
-
+        for(int i = 0; i< tablica.length;i++){
+            for (int j = 0; j < tablica[i].length; j++){
+                System.out.print(tablica[i][j] + " ");
+            }
+        }
     }
 
 }
